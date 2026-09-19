@@ -28,6 +28,7 @@ There is no test runner configured in `hookhub/` currently.
 - `hookhub/` is a stock Next.js **App Router** project (`next@16`, `react@19`) bootstrapped with `create-next-app` — routing and layout live under `hookhub/app/`, with `app/layout.tsx` as the root layout and `app/page.tsx` as the home route.
 - Path alias `@/*` resolves to the `hookhub/` root (see `hookhub/tsconfig.json`).
 - Styling uses Tailwind CSS v4 via `@tailwindcss/postcss` (see `hookhub/postcss.config.mjs`), not a `tailwind.config.js`.
+- `hookhub/lib/hooks.ts` fetches hook repo data from the GitHub Search API with a 24h revalidation window, maps it to the `Hook` type in `hookhub/lib/types.ts`, and it's rendered by `HooksBrowser` → `HookRow`/`HookCard` in `hookhub/components/`.
 - **`hookhub/AGENTS.md` is auto-generated/re-added by `next dev`** (see `node_modules/next/dist/server/lib/generate-agent-files.js`). Do not manually delete its Next.js agent-rules block — it will simply reappear, and it should be committed rather than fought. It instructs agents to read `node_modules/next/dist/docs/` before writing Next.js code, since this Next.js version has breaking API/convention changes from what training data may assume.
 - `hookhub/CLAUDE.md` just references `@AGENTS.md`, so agent instructions for that subproject live in `AGENTS.md`, not duplicated there.
 
